@@ -21,6 +21,8 @@ namespace GameJamNov2020
                 .AddSystem(new InputSystem())
                 .AddSystem(new MovementSystem())
                 .AddSystem(new AIInputSystem())
+                .AddSystem(new CollisionSystem())
+                .AddSystem(new DynamicStaticCollisionResolverSystem())
                 .AddSystem(new RenderSystem(graphicsDevice))
                 .Build();
 
@@ -30,6 +32,9 @@ namespace GameJamNov2020
             playerEntity.Attach(new Transform2(new Vector2(100f, 100f)));
             playerEntity.Attach(new PlayerFlag());
             playerEntity.Attach(new MovementDirection());
+            playerEntity.Attach(new Collider());
+            playerEntity.Attach(new Collisions());
+            playerEntity.Attach(new DynamicObject());
 
             Texture2D enemyTexture = Content.Load<Texture2D>("platformPack_tile044");
             Entity enemyEntity = world.CreateEntity();
@@ -37,6 +42,8 @@ namespace GameJamNov2020
             enemyEntity.Attach(new Transform2(new Vector2(400f, 100f)));
             enemyEntity.Attach(new AIPattern());
             enemyEntity.Attach(new MovementDirection());
+            enemyEntity.Attach(new Collider());
+            enemyEntity.Attach(new StaticObject());
         }
 
         public GameState Update(GameTime gameTime)
