@@ -25,3 +25,15 @@
 /processorParam:TextureFormat=Color
 /build:platformChar_idle.png
 
+#begin platformPack_tile044.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:platformPack_tile044.png
+

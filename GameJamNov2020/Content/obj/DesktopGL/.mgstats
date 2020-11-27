@@ -1,2 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/Jeff/Documents/MyProjects/GameJamNov2020/GameJamNov2020/Content/platformChar_idle.png","C:/Users/Jeff/Documents/MyProjects/GameJamNov2020/GameJamNov2020/Content/bin/DesktopGL/platformChar_idle.xnb","TextureProcessor","Texture2DContent",4894,36949,0.2541097
+"C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/platformChar_idle.png","C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/bin/DesktopGL/platformChar_idle.xnb","TextureProcessor","Texture2DContent",4894,36949,0.4462208
+"C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/platformPack_tile044.png","C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/bin/DesktopGL/platformPack_tile044.xnb","TextureProcessor","Texture2DContent",4122,16469,0.0175069
