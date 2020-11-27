@@ -20,6 +20,7 @@ namespace GameJamNov2020
             world = new WorldBuilder()
                 .AddSystem(new InputSystem())
                 .AddSystem(new MovementSystem())
+                .AddSystem(new AIInputSystem())
                 .AddSystem(new RenderSystem(graphicsDevice))
                 .Build();
 
@@ -34,6 +35,7 @@ namespace GameJamNov2020
             Entity enemyEntity = world.CreateEntity();
             enemyEntity.Attach(new Sprite(enemyTexture));
             enemyEntity.Attach(new Transform2(new Vector2(400f, 100f)));
+            enemyEntity.Attach(new AIPattern());
             enemyEntity.Attach(new MovementDirection());
         }
 
