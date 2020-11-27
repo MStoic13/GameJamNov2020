@@ -31,10 +31,12 @@ namespace GameJamNov2020
                 Vector2 displacement = Vector2.Zero;
                 Collisions collisions = collisionsMapper.Get(entityId);
                 Bag<Collision> newCollisions = new Bag<Collision>();
+                bool hasCollidedWithStatic = false;
                 foreach(Collision collision in collisions.CollisionBag)
                 {
                     if (staticObjectMapper.Has(collision.OtherEntityId))
                     {
+                        hasCollidedWithStatic = true;
                         // Simple Collision fixing as everything is a rectangle
                         if (MathF.Abs(collision.Penetration.X) > MathF.Abs(displacement.X) || 
                             MathF.Abs(collision.Penetration.Y) > MathF.Abs(displacement.Y))
@@ -49,6 +51,11 @@ namespace GameJamNov2020
                 }
                 transformMapper.Get(entityId).Position += displacement;
                 collisions.CollisionBag = newCollisions;
+                if (hasCollidedWithStatic)
+                {
+                    Entity dynamicEntity = GetEntity(entityId);
+                    dynamicEntity.Attach(new DynamicCollidedWithStatic());
+                }
             }
         }
     }

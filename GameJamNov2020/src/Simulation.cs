@@ -30,7 +30,9 @@ namespace GameJamNov2020
                 .AddSystem(new DynamicStaticCollisionResolverSystem())
                 .AddSystem(new PlayerEnemyCollisionResolverSystem())
                 .AddSystem(new PlayerDuplicationPowerCollisionResolverSystem())
+                .AddSystem(new DynamicDynamicCollisionResolverSystem())
                 .AddSystem(new CollisionResolverCleanupSystem())
+                .AddSystem(new FlagCleanupSystem())
                 .AddSystem(new RenderSystem(graphicsDevice))
                 .Build();
 

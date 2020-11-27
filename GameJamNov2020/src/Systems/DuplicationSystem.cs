@@ -37,8 +37,8 @@ namespace GameJamNov2020
                 duplicatePlayer.Attach(spriteMapper.Get(entityId));
                 duplicatePlayer.Attach(new PlayerFlag());
                 duplicatePlayer.Attach(new MovementDirection());
-                Vector2 lastExistingPlayerPosition = currentEntity.Get<Transform2>().Position;
-                duplicatePlayer.Attach(new Transform2(new Vector2(transformMapper.Get(entityId).Position.X + 70, transformMapper.Get(entityId).Position.Y)));
+                Transform2 transform = transformMapper.Get(entityId);
+                duplicatePlayer.Attach(new Transform2(new Vector2(transform.Position.X + 70, transform.Position.Y)));
                 duplicatePlayer.Attach(new Collider());
                 duplicatePlayer.Attach(new Collisions());
                 duplicatePlayer.Attach(new DynamicObject());
