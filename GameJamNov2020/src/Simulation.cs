@@ -18,6 +18,8 @@ namespace GameJamNov2020
             GraphicsDevice = graphicsDevice;
 
             world = new WorldBuilder()
+                .AddSystem(new InputSystem())
+                .AddSystem(new MovementSystem())
                 .AddSystem(new RenderSystem(graphicsDevice))
                 .Build();
 
@@ -27,6 +29,7 @@ namespace GameJamNov2020
             playerEntity.Attach(new Sprite(playerTexture));
             playerEntity.Attach(new Transform2(new Vector2(100f, 100f)));
             playerEntity.Attach(new PlayerFlag());
+            playerEntity.Attach(new MovementDirection());
         }
 
         public GameState Update(GameTime gameTime)
