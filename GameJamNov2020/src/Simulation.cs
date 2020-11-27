@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using MonoGame.Extended.Entities;
+using MonoGame.Extended.Sprites;
+using MonoGame.Extended;
 
 namespace GameJamNov2020
 {
@@ -13,10 +15,18 @@ namespace GameJamNov2020
         public Simulation(int level, ContentManager content, GraphicsDevice graphicsDevice)
         {
             Content = content;
+            GraphicsDevice = graphicsDevice;
 
             world = new WorldBuilder()
                 .AddSystem(new RenderSystem(graphicsDevice))
                 .Build();
+
+            Texture2D playerTexture = Content.Load<Texture2D>("platformChar_idle");
+
+            Entity playerEntity = world.CreateEntity();
+            playerEntity.Attach(new Sprite(playerTexture));
+            playerEntity.Attach(new Transform2(new Vector2(100f, 100f)));
+            playerEntity.Attach(new PlayerFlag());
         }
 
         public GameState Update(GameTime gameTime)
