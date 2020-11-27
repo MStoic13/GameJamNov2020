@@ -1,3 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/duplicate_power.png","C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/bin/DesktopGL/Content/duplicate_power.xnb","TextureProcessor","Texture2DContent",1814,16469,0.2184789
 "C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/platformChar_idle.png","C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/bin/DesktopGL/Content/platformChar_idle.xnb","TextureProcessor","Texture2DContent",4894,36949,0.177225
-"C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/platformPack_tile044.png","C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/bin/DesktopGL/Content/platformPack_tile044.xnb","TextureProcessor","Texture2DContent",4122,16469,0.1603329
+"C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/platformPack_tile044.png","C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/bin/DesktopGL/Content/platformPack_tile044.xnb","TextureProcessor","Texture2DContent",4122,16469,0.1614394
