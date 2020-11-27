@@ -13,27 +13,35 @@ namespace GameJamNov2020
 {
     class DuplicationSystem : EntityUpdateSystem
     {
-        public DuplicationSystem() : base(Aspect.All(typeof(PlayerFlag)))
+        private ComponentMapper<Sprite> spriteMapper;
+        private ComponentMapper<Transform2> transformMapper;
+
+        public DuplicationSystem() : base(Aspect.All(typeof(NeedsToDuplicate), typeof(PlayerFlag), typeof(Sprite)))
         {
         }
 
         public override void Initialize(IComponentMapperService mapperService)
         {
+            spriteMapper = mapperService.GetMapper<Sprite>();
+            transformMapper = mapperService.GetMapper<Transform2>();
         }
 
         public override void Update(GameTime gameTime)
         {
-            if ()
+            foreach(int entityId in ActiveEntities)
             {
-                int lastActiveEntityIndex = ActiveEntities.Count - 1;
-                Entity lastExistingPlayer = GetEntity(ActiveEntities[lastActiveEntityIndex]);
+                Entity currentEntity = GetEntity(entityId);
+                currentEntity.Detach<NeedsToDuplicate>();
 
                 Entity duplicatePlayer = CreateEntity();
-                duplicatePlayer.Attach(lastExistingPlayer.Get<Sprite>());
-                duplicatePlayer.Attach(lastExistingPlayer.Get<PlayerFlag>());
-                duplicatePlayer.Attach(lastExistingPlayer.Get<MovementDirection>());
-                Vector2 lastExistingPlayerPosition = lastExistingPlayer.Get<Transform2>().Position;
-                duplicatePlayer.Attach(new Transform2(new Vector2(lastExistingPlayerPosition.X + 70, lastExistingPlayerPosition.Y)));
+                duplicatePlayer.Attach(spriteMapper.Get(entityId));
+                duplicatePlayer.Attach(new PlayerFlag());
+                duplicatePlayer.Attach(new MovementDirection());
+                Vector2 lastExistingPlayerPosition = currentEntity.Get<Transform2>().Position;
+                duplicatePlayer.Attach(new Transform2(new Vector2(transformMapper.Get(entityId).Position.X + 70, transformMapper.Get(entityId).Position.Y)));
+                duplicatePlayer.Attach(new Collider());
+                duplicatePlayer.Attach(new Collisions());
+                duplicatePlayer.Attach(new DynamicObject());
             }
         }
     }
