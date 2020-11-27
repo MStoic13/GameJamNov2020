@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/duplicate_power.png</SourceFile>
-  <SourceTime>2020-11-27T14:11:03.1568404-08:00</SourceTime>
-  <DestFile>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/bin/DesktopGL/Content/duplicate_power.xnb</DestFile>
-  <DestTime>2020-11-27T14:15:18.0273072-08:00</DestTime>
+  <SourceFile>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/wall.png</SourceFile>
+  <SourceTime>2020-11-26T22:52:40.2640762-08:00</SourceTime>
+  <DestFile>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/bin/DesktopGL/Content/wall.xnb</DestFile>
+  <DestTime>2020-11-27T14:15:51.9411547-08:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

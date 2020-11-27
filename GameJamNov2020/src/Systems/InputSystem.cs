@@ -29,7 +29,7 @@ namespace GameJamNov2020
                 MovementDirection movementDirection = movementDirectionMapper.Get(entityId);
                 KeyboardStateExtended inputState = KeyboardExtended.GetState();
                 movementDirection.Direction = Vector2.Zero;
-                movementDirection.Speed = 100;
+                movementDirection.Speed = 250;
                 if (inputState.IsKeyDown(Keys.W))
                 {
                     movementDirection.Direction = new Vector2(0, -1);

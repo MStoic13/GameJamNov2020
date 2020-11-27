@@ -22,6 +22,9 @@ namespace GameJamNov2020
 
         protected override void Initialize()
         {
+            _graphics.PreferredBackBufferWidth = 1600;
+            _graphics.PreferredBackBufferHeight = 900;
+            _graphics.ApplyChanges();
             base.Initialize();
         }
 
