@@ -23,6 +23,7 @@ namespace GameJamNov2020
                 .AddSystem(new AIInputSystem())
                 .AddSystem(new CollisionSystem())
                 .AddSystem(new DynamicStaticCollisionResolverSystem())
+                .AddSystem(new CollisionResolverCleanupSystem())
                 .AddSystem(new RenderSystem(graphicsDevice))
                 .Build();
 
