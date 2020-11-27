@@ -21,9 +21,11 @@ namespace GameJamNov2020
                 .AddSystem(new InputSystem())
                 .AddSystem(new MovementSystem())
                 .AddSystem(new AIInputSystem())
-                .AddSystem(new CollisionSystem())
+                .AddSystem(new DuplicationSystem())
+                .AddSystem(new CollisionSystem())           
                 .AddSystem(new DynamicStaticCollisionResolverSystem())
                 .AddSystem(new PlayerEnemyCollisionResolverSystem())
+                .AddSystem(new PlayerDuplicationPowerCollisionResolverSystem())
                 .AddSystem(new DynamicDynamicCollisionResolverSystem())
                 .AddSystem(new CollisionResolverCleanupSystem())
                 .AddSystem(new FlagCleanupSystem())
@@ -48,6 +50,21 @@ namespace GameJamNov2020
             enemyEntity.Attach(new MovementDirection());
             enemyEntity.Attach(new Collider());
             enemyEntity.Attach(new EnemyFlag());
+
+            Texture2D duplicationPowerTexture = Content.Load<Texture2D>("duplicate_power");
+            Entity duplicationPowerEntity = world.CreateEntity();
+            duplicationPowerEntity.Attach(new Sprite(duplicationPowerTexture));
+            duplicationPowerEntity.Attach(new Transform2(new Vector2(200f, 300f)));
+            duplicationPowerEntity.Attach(new DuplicationPowerFlag());
+            duplicationPowerEntity.Attach(new Collider());
+
+            // bug workaround because if a system tries to fetch an entity with a component that has never touched the world yet, it crashes
+            // with a null exception from the Monogame library instead of returning an empty collection
+            // So we create this empty entity with the problematic component and then immediately delete it just so that this component
+            // gets to touch the world so it doesn't crash
+            Entity emptyEntity = world.CreateEntity();
+            emptyEntity.Attach(new NeedsToDuplicate());
+            world.DestroyEntity(emptyEntity.Id);
         }
 
         public GameState Update(GameTime gameTime)
