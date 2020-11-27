@@ -21,6 +21,7 @@ namespace GameJamNov2020
                 .AddSystem(new InputSystem())
                 .AddSystem(new MovementSystem())
                 .AddSystem(new AIInputSystem())
+                .AddSystem(new DuplicationSystem())
                 .AddSystem(new RenderSystem(graphicsDevice))
                 .Build();
 
@@ -37,6 +38,11 @@ namespace GameJamNov2020
             enemyEntity.Attach(new Transform2(new Vector2(400f, 100f)));
             enemyEntity.Attach(new AIPattern());
             enemyEntity.Attach(new MovementDirection());
+
+            Texture2D duplicationPowerTexture = Content.Load<Texture2D>("duplicate_power");
+            Entity duplicationPowerEntity = world.CreateEntity();
+            duplicationPowerEntity.Attach(new Sprite(duplicationPowerTexture));
+            duplicationPowerEntity.Attach(new Transform2(new Vector2(200f, 300f)));
         }
 
         public GameState Update(GameTime gameTime)
