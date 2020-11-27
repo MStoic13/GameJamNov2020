@@ -23,7 +23,7 @@ namespace GameJamNov2020
 
         public override void Update(GameTime gameTime)
         {
-            if()
+            if ()
             {
                 int lastActiveEntityIndex = ActiveEntities.Count - 1;
                 Entity lastExistingPlayer = GetEntity(ActiveEntities[lastActiveEntityIndex]);
