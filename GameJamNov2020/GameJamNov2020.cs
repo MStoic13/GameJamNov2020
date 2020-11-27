@@ -9,6 +9,10 @@ namespace GameJamNov2020
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        private Simulation simulation;
+        private int level = 0;
+        private GameState state = GameState.LevelComplete;
+
         public GameJamNov2020()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -18,8 +22,6 @@ namespace GameJamNov2020
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -27,24 +29,43 @@ namespace GameJamNov2020
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            // TODO: Add your update logic here
-
+            switch(state)
+            {
+                case GameState.LevelComplete:
+                    level++;
+                    reset();
+                    break;
+                case GameState.Reset:
+                    reset();
+                    break;
+                case GameState.Simulating:
+                    state = simulation.Update(gameTime);
+                    break;
+            }
             base.Update(gameTime);
+        }
+
+        private void reset()
+        {
+            simulation = new Simulation(level, Content, GraphicsDevice);
+            state = GameState.Simulating;
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
+            switch(state)
+            {
+                case GameState.Simulating:
+                    simulation.Draw(gameTime);
+                    break;
+            }
 
             base.Draw(gameTime);
         }
