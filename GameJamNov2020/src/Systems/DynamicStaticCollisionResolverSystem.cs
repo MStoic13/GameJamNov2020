@@ -13,6 +13,7 @@ namespace GameJamNov2020
     {
         private ComponentMapper<Transform2> transformMapper;
         private ComponentMapper<Collisions> collisionsMapper;
+        private ComponentMapper<StaticObject> staticObjectMapper;
 
         public DynamicStaticCollisionResolverSystem() : base(Aspect.All(typeof(DynamicObject), typeof(Transform2), typeof(Collisions))) { }
 
@@ -20,6 +21,7 @@ namespace GameJamNov2020
         {
             transformMapper = mapperService.GetMapper<Transform2>();
             collisionsMapper = mapperService.GetMapper<Collisions>();
+            staticObjectMapper = mapperService.GetMapper<StaticObject>();
         }
 
         public override void Update(GameTime gameTime)
@@ -31,9 +33,7 @@ namespace GameJamNov2020
                 Bag<Collision> newCollisions = new Bag<Collision>();
                 foreach(Collision collision in collisions.CollisionBag)
                 {
-                    Entity otherEntity = GetEntity(collision.OtherEntityId);
-
-                    if (otherEntity.Has<StaticObject>())
+                    if (staticObjectMapper.Has(collision.OtherEntityId))
                     {
                         // Simple Collision fixing as everything is a rectangle
                         if (MathF.Abs(collision.Penetration.X) > MathF.Abs(displacement.X))
