@@ -14,6 +14,7 @@ namespace GameJamNov2020
         private ComponentMapper<Transform2> transformMapper;
         private ComponentMapper<Collisions> collisionsMapper;
         private ComponentMapper<DynamicObject> dynamicObjectMapper;
+        private ComponentMapper<DynamicCollidedWithStatic> flagMapper;
 
         public DynamicDynamicCollisionResolverSystem() : base(Aspect.All(typeof(DynamicObject), typeof(Transform2), typeof(Collisions)).Exclude(typeof(DynamicCollidedWithStatic))) { }
 
@@ -22,12 +23,18 @@ namespace GameJamNov2020
             transformMapper = mapperService.GetMapper<Transform2>();
             collisionsMapper = mapperService.GetMapper<Collisions>();
             dynamicObjectMapper = mapperService.GetMapper<DynamicObject>();
+            flagMapper = mapperService.GetMapper<DynamicCollidedWithStatic>();
         }
 
         public override void Update(GameTime gameTime)
         {
             foreach(int entityId in ActiveEntities)
             {
+                if (flagMapper.Has(entityId))
+                {
+                    // seems like .exlude doesn't always work
+                    continue;
+                }
                 Vector2 displacement = Vector2.Zero;
                 Collisions collisions = collisionsMapper.Get(entityId);
                 Bag<Collision> newCollisions = new Bag<Collision>();
