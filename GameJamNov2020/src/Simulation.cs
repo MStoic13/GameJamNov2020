@@ -46,6 +46,7 @@ namespace GameJamNov2020
             enemyEntity.Attach(new MovementDirection());
             enemyEntity.Attach(new Collider());
             enemyEntity.Attach(new EnemyFlag());
+            enemyEntity.Attach(new Collisions());
         }
 
         public GameState Update(GameTime gameTime)
