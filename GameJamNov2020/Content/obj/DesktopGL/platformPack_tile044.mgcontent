@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/platformChar_idle.png</SourceFile>
-  <SourceTime>2020-11-26T22:12:05.7957396-08:00</SourceTime>
-  <DestFile>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/bin/DesktopGL/Content/platformChar_idle.xnb</DestFile>
-  <DestTime>2020-11-26T22:51:17.6073536-08:00</DestTime>
+  <SourceFile>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/platformPack_tile044.png</SourceFile>
+  <SourceTime>2020-11-26T22:52:40.3468542-08:00</SourceTime>
+  <DestFile>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/bin/DesktopGL/platformPack_tile044.xnb</DestFile>
+  <DestTime>2020-11-26T22:53:43.3244239-08:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

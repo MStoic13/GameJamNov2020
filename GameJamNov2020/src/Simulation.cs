@@ -20,16 +20,23 @@ namespace GameJamNov2020
             world = new WorldBuilder()
                 .AddSystem(new InputSystem())
                 .AddSystem(new MovementSystem())
+                .AddSystem(new AIInputSystem())
                 .AddSystem(new RenderSystem(graphicsDevice))
                 .Build();
 
             Texture2D playerTexture = Content.Load<Texture2D>("platformChar_idle");
-
             Entity playerEntity = world.CreateEntity();
             playerEntity.Attach(new Sprite(playerTexture));
             playerEntity.Attach(new Transform2(new Vector2(100f, 100f)));
             playerEntity.Attach(new PlayerFlag());
             playerEntity.Attach(new MovementDirection());
+
+            Texture2D enemyTexture = Content.Load<Texture2D>("platformPack_tile044");
+            Entity enemyEntity = world.CreateEntity();
+            enemyEntity.Attach(new Sprite(enemyTexture));
+            enemyEntity.Attach(new Transform2(new Vector2(400f, 100f)));
+            enemyEntity.Attach(new AIPattern());
+            enemyEntity.Attach(new MovementDirection());
         }
 
         public GameState Update(GameTime gameTime)
