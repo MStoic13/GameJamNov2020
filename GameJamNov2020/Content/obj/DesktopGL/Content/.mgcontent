@@ -4,11 +4,15 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/door.png</File>
     <File>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/duplicate_power.png</File>
     <File>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/platformChar_idle.png</File>
     <File>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/platformPack_tile044.png</File>
+    <File>C:/MyStuff/MyVSProjects/GameJamNov2020/GameJamNov2020/Content/wall.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
