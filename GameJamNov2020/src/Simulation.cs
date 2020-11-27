@@ -23,6 +23,7 @@ namespace GameJamNov2020
                 .AddSystem(new AIInputSystem())
                 .AddSystem(new CollisionSystem())
                 .AddSystem(new DynamicStaticCollisionResolverSystem())
+                .AddSystem(new PlayerEnemyCollisionResolverSystem())
                 .AddSystem(new CollisionResolverCleanupSystem())
                 .AddSystem(new RenderSystem(graphicsDevice))
                 .Build();
@@ -44,7 +45,7 @@ namespace GameJamNov2020
             enemyEntity.Attach(new AIPattern());
             enemyEntity.Attach(new MovementDirection());
             enemyEntity.Attach(new Collider());
-            enemyEntity.Attach(new StaticObject());
+            enemyEntity.Attach(new EnemyFlag());
         }
 
         public GameState Update(GameTime gameTime)
