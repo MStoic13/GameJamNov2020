@@ -9,19 +9,19 @@ using System.Text;
 
 namespace GameJamNov2020
 {
-    class DynamicStaticCollisionResolverSystem : EntityUpdateSystem
+    class DynamicDynamicCollisionResolverSystem : EntityUpdateSystem
     {
         private ComponentMapper<Transform2> transformMapper;
         private ComponentMapper<Collisions> collisionsMapper;
-        private ComponentMapper<StaticObject> staticObjectMapper;
+        private ComponentMapper<DynamicObject> dynamicObjectMapper;
 
-        public DynamicStaticCollisionResolverSystem() : base(Aspect.All(typeof(DynamicObject), typeof(Transform2), typeof(Collisions))) { }
+        public DynamicDynamicCollisionResolverSystem() : base(Aspect.All(typeof(DynamicObject), typeof(Transform2), typeof(Collisions)).Exclude(typeof(DynamicCollidedWithStatic))) { }
 
         public override void Initialize(IComponentMapperService mapperService)
         {
             transformMapper = mapperService.GetMapper<Transform2>();
             collisionsMapper = mapperService.GetMapper<Collisions>();
-            staticObjectMapper = mapperService.GetMapper<StaticObject>();
+            dynamicObjectMapper = mapperService.GetMapper<DynamicObject>();
         }
 
         public override void Update(GameTime gameTime)
@@ -31,17 +31,29 @@ namespace GameJamNov2020
                 Vector2 displacement = Vector2.Zero;
                 Collisions collisions = collisionsMapper.Get(entityId);
                 Bag<Collision> newCollisions = new Bag<Collision>();
-                bool hasCollidedWithStatic = false;
+
                 foreach(Collision collision in collisions.CollisionBag)
                 {
-                    if (staticObjectMapper.Has(collision.OtherEntityId))
+                    if (dynamicObjectMapper.Has(collision.OtherEntityId))
                     {
-                        hasCollidedWithStatic = true;
-                        // Simple Collision fixing as everything is a rectangle
-                        if (MathF.Abs(collision.Penetration.X) > MathF.Abs(displacement.X) || 
+                        if (MathF.Abs(collision.Penetration.X) > MathF.Abs(displacement.X) ||
                             MathF.Abs(collision.Penetration.Y) > MathF.Abs(displacement.Y))
                         {
                             displacement -= collision.Penetration;
+                        }
+                        Collisions otherCollisions = collisionsMapper.Get(collision.OtherEntityId);
+                        if (otherCollisions != null)
+                        {
+                            Bag<Collision> otherNewCollisions = new Bag<Collision>();
+                            // Sloppiliy remove collisions with this object
+                            foreach (Collision otherCollision in otherCollisions.CollisionBag)
+                            {
+                                if (otherCollision.OtherEntityId != entityId)
+                                {
+                                    otherNewCollisions.Add(otherCollision);
+                                }
+                            }
+                            otherCollisions.CollisionBag = otherNewCollisions;
                         }
                     }
                     else
@@ -51,11 +63,6 @@ namespace GameJamNov2020
                 }
                 transformMapper.Get(entityId).Position += displacement;
                 collisions.CollisionBag = newCollisions;
-                if (hasCollidedWithStatic)
-                {
-                    Entity dynamicEntity = GetEntity(entityId);
-                    dynamicEntity.Attach(new DynamicCollidedWithStatic());
-                }
             }
         }
     }
