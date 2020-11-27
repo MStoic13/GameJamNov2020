@@ -11,10 +11,11 @@ namespace GameJamNov2020
 {
     class CollisionSystem : EntityUpdateSystem
     {
-        ComponentMapper<Transform2> transformMapper;
-        ComponentMapper<Collider> colliderMapper;
-        ComponentMapper<Sprite> spriteMapper;
-        ComponentMapper<Collisions> collisionsMapper;
+        private ComponentMapper<Transform2> transformMapper;
+        private ComponentMapper<Collider> colliderMapper;
+        private ComponentMapper<Sprite> spriteMapper;
+        private ComponentMapper<Collisions> collisionsMapper;
+
         public CollisionSystem() : base(Aspect.All(typeof(Collider), typeof(Transform2)))
         {
         }

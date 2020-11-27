@@ -11,7 +11,7 @@ namespace GameJamNov2020
     {
         public RectangleF Hitbox { get; set; }
 
-        // Only used for entities without a sprite/transform
+        // Only used for entities without a sprite/transform, or for custom hitboxes
         public Collider(RectangleF hitbox)
         {
             Hitbox = hitbox;

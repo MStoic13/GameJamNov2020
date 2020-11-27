@@ -36,11 +36,8 @@ namespace GameJamNov2020
                     if (staticObjectMapper.Has(collision.OtherEntityId))
                     {
                         // Simple Collision fixing as everything is a rectangle
-                        if (MathF.Abs(collision.Penetration.X) > MathF.Abs(displacement.X))
-                        {
-                            displacement -= collision.Penetration;
-                        }
-                        else if (MathF.Abs(collision.Penetration.Y) > MathF.Abs(displacement.Y))
+                        if (MathF.Abs(collision.Penetration.X) > MathF.Abs(displacement.X) || 
+                            MathF.Abs(collision.Penetration.Y) > MathF.Abs(displacement.Y))
                         {
                             displacement -= collision.Penetration;
                         }
