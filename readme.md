@@ -12,7 +12,7 @@ You can open GameJamNov2020.sln, pull nuget packages and run. (Requries Visual S
 
 OR
 
-You can run GameJamNov2020.exe from "Running the game" folder.
+Download the "Running the game" folder and run GameJamNov2020.exe.
 
 ## Libraries used
 
