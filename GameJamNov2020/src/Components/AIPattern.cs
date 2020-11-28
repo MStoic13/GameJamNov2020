@@ -16,13 +16,13 @@ namespace GameJamNov2020
             {
                 new MovementDirection()
                 {
-                    Direction = new Vector2(1, 0),
-                    Speed = 100f
+                    Direction = new Vector2(0, 1),
+                    Speed = 200f
                 },
                 new MovementDirection()
                 {
-                    Direction = new Vector2(-1, 0),
-                    Speed = 100f
+                    Direction = new Vector2(0, -1),
+                    Speed = 200f
                 }
             };
         }
