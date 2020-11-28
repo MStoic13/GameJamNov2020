@@ -31,6 +31,7 @@ namespace GameJamNov2020
                 .AddSystem(new PlayerEnemyCollisionResolverSystem())
                 .AddSystem(new PlayerDuplicationPowerCollisionResolverSystem())
                 .AddSystem(new DynamicDynamicCollisionResolverSystem())
+                .AddSystem(new DoorPlayerCollisionResolverSystem())
                 .AddSystem(new CollisionResolverCleanupSystem())
                 .AddSystem(new FlagCleanupSystem())
                 .AddSystem(new RenderSystem(graphicsDevice))
@@ -66,6 +67,11 @@ namespace GameJamNov2020
         public GameState Update(GameTime gameTime)
         {
             world.Update(gameTime);
+            if (Utility.IsLevelComplete)
+            {
+                Utility.IsLevelComplete = false;
+                return GameState.LevelComplete;               
+            }
             return GameState.Simulating;
         }
 

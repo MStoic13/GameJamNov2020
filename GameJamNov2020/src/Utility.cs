@@ -11,6 +11,8 @@ namespace GameJamNov2020
 {
     static class Utility
     {
+        public static bool IsLevelComplete = false;
+
         public static void MakeLevel1(List<Texture2D> textures, World world)
         {
             List<LevelRow> levelMap = new List<LevelRow>() 
@@ -69,6 +71,9 @@ namespace GameJamNov2020
 
         private static void AttachDoorComponents(Entity doorEntity)
         {
+            doorEntity.Attach(new Collider());
+            doorEntity.Attach(new DoorFlag());
+            doorEntity.Attach(new Collisions());
         }
 
         private static void AttachDuplicatePowerComponents(Entity duplicatePowerEntity)
