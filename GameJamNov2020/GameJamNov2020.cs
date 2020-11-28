@@ -42,7 +42,7 @@ namespace GameJamNov2020
             {
                 case GameState.LevelComplete:
                     level++;
-                    if (level > 1)
+                    if (level > 2)
                     {
                         Exit();
                     }
