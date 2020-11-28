@@ -61,7 +61,7 @@ namespace GameJamNov2020
                 enemyTexture
             };
 
-            Utility.MakeLevel1(textures, world);            
+            Utility.MakeLevel2(textures, world);            
         }
 
         public GameState Update(GameTime gameTime)

@@ -22,14 +22,57 @@ namespace GameJamNov2020
                 
                 // doors
                 new LevelRow() { TextureName = TextureNames.Door, Position = new Vector2(170,  100) },
-                new LevelRow() { TextureName = TextureNames.Door, Position = new Vector2(240,  380) },
+                new LevelRow() { TextureName = TextureNames.Door, Position = new Vector2(1240, 600) },
 
                 // player
-                new LevelRow() { TextureName = TextureNames.Player, Position = new Vector2(1000,  580) },
+                new LevelRow() { TextureName = TextureNames.Player, Position = new Vector2(350,  580) },
 
                 // duplication powerups
-                new LevelRow() { TextureName = TextureNames.DuplicatePowerUp, Position = new Vector2(240,  800) },
                 new LevelRow() { TextureName = TextureNames.DuplicatePowerUp, Position = new Vector2(1200,  100) },
+
+                // enemy
+                new LevelRow() { TextureName = TextureNames.Enemy, Position = new Vector2(900,  100) },
+            };
+
+            MakeLevelFromLevelMap(levelMap, textures, world);
+        }
+
+        public static void MakeLevel2(List<Texture2D> textures, World world)
+        {
+            List<LevelRow> levelMap = new List<LevelRow>()
+            {   
+                // interior walls
+                // left barrier
+                new LevelRow() { TextureName = TextureNames.Wall, Position = new Vector2(10,  240) },
+                // corner
+                new LevelRow() { TextureName = TextureNames.Wall, Position = new Vector2(170,  170) },
+                new LevelRow() { TextureName = TextureNames.Wall, Position = new Vector2(240,  170) },
+                new LevelRow() { TextureName = TextureNames.Wall, Position = new Vector2(240,  240) },
+                // middle blocks
+                new LevelRow() { TextureName = TextureNames.Wall, Position = new Vector2(600,  600) },
+                new LevelRow() { TextureName = TextureNames.Wall, Position = new Vector2(670,  600) },
+                // right blocks
+                
+                new LevelRow() { TextureName = TextureNames.Wall, Position = new Vector2(1200, 560) },
+                new LevelRow() { TextureName = TextureNames.Wall, Position = new Vector2(1200, 630) },
+                new LevelRow() { TextureName = TextureNames.Wall, Position = new Vector2(1200, 700) },
+                new LevelRow() { TextureName = TextureNames.Wall, Position = new Vector2(1500, 560) },
+                
+                // doors
+                new LevelRow() { TextureName = TextureNames.Door, Position = new Vector2(170,  700) },
+                new LevelRow() { TextureName = TextureNames.Door, Position = new Vector2(700, 700) },
+                new LevelRow() { TextureName = TextureNames.Door, Position = new Vector2(1300, 700) },
+
+                // player
+                new LevelRow() { TextureName = TextureNames.Player, Position = new Vector2(50,  50) },
+
+                // duplication powerups
+                new LevelRow() { TextureName = TextureNames.DuplicatePowerUp, Position = new Vector2(700,  300) },
+                new LevelRow() { TextureName = TextureNames.DuplicatePowerUp, Position = new Vector2(1200, 200) },
+
+                // enemy
+                new LevelRow() { TextureName = TextureNames.Enemy, Position = new Vector2(400,  100) },
+                new LevelRow() { TextureName = TextureNames.Enemy, Position = new Vector2(900,  100) },
             };
 
             MakeLevelFromLevelMap(levelMap, textures, world);
