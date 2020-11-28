@@ -37,11 +37,15 @@ namespace GameJamNov2020
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+                Exit();        
             switch(state)
             {
                 case GameState.LevelComplete:
                     level++;
+                    if (level > 1)
+                    {
+                        Exit();
+                    }
                     reset();
                     break;
                 case GameState.Reset:
