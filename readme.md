@@ -4,7 +4,7 @@ Jeff and I (Maria) made an arcade game to explore ECS (entity component system) 
 
 The goal of the game is to consume the yellow crystals to duplicate yourself and then use the walls to position each clone on a door. There are 2 levels.
 
-![Screenshot of level 2](/level2.png "Screenshot of level 2")
+<img src="./level2.png">
 
 ## Running the game
 
